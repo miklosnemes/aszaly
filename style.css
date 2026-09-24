@@ -1,0 +1,91 @@
+:root {
+  color-scheme: light;
+  --ink: #1f2937;
+  --muted: #4b5563;
+  --line: #d9e0e7;
+  --paper: #ffffff;
+  --page: #eef2f6;
+  --link: #155e91;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+.document {
+  width: min(100%, 1040px);
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 68px) clamp(18px, 5vw, 78px);
+  background: var(--paper);
+  box-shadow: 0 3px 24px rgba(15, 23, 42, .08);
+}
+
+.document p {
+  margin: 0 0 1em !important;
+  line-height: 1.62 !important;
+}
+
+.document p[align="center"] { text-align: center; }
+.document p[align="justify"] { text-align: justify; }
+
+.document a {
+  color: var(--link);
+  overflow-wrap: anywhere;
+}
+
+.document img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.35rem auto;
+}
+
+.document table {
+  width: 100% !important;
+  max-width: 100%;
+  margin: 1.4rem auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.document td,
+.document th {
+  padding: .5rem .62rem !important;
+  vertical-align: top;
+  border-color: var(--line) !important;
+}
+
+/* The Word-to-HTML export contains print-only page-break styles. */
+.document [style*="page-break-before"],
+.document [style*="page-break-after"] {
+  page-break-before: auto !important;
+  page-break-after: auto !important;
+  break-before: auto !important;
+  break-after: auto !important;
+}
+
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .document { padding: 24px 15px 40px; }
+  .document p[align="justify"] { text-align: left; }
+  .document table {
+    display: block;
+    overflow-x: auto;
+    white-space: normal;
+  }
+}
+
+@media print {
+  body { background: #fff; }
+  .document { width: 100%; padding: 0; box-shadow: none; }
+}
